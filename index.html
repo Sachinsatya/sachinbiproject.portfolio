@@ -4,10 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Web Landing Page</title>
+
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+        }
+
+        #dashboard-container {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        #dashboard-list {
+            display: flex;
+            flex-direction: column;
+            background-color: #f0f0f0;
+            padding: 10px;
+            max-height: 100vh;
+            overflow-y: auto;
+        }
+
+        .dashboard-button {
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 10px;
+            border: none;
+            background-color: #e0e0e0;
+            text-align: left;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .dashboard-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
 </head>
 <body>
 
-    <iframe width="100%" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiODI4OWVjNDUtOWY4Yy00Zjk4LWEyZGMtOTA5NjNmZjA5NWJlIiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" frameborder="0" allowFullScreen="true"></iframe>
+    <div id="dashboard-list">
+        <button class="dashboard-button" onclick="loadDashboard('https://app.powerbi.com/view?r=eyJrIjoiMzRjOTliYjQtNzM4Ny00ODVkLWI3NTAtNGIwMzk0NjY1YWUwIiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9')">Dashboard 1</button>
+        <button class="dashboard-button" onclick="loadDashboard('https://app.powerbi.com/view?r=eyJrIjoiYjM3MGU0MDAtN2ZjNy00MzgyLTljMWQtY2UzZTVjY2QzZTRkIiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9')">Dashboard 2</button>
+        <button class="dashboard-button" onclick="loadDashboard('https://app.powerbi.com/view?r=eyJrIjoiNDBjZjViZTktMmE0Zi00ZmQ3LTkzZGEtMzU2ZjA5NDdjZTg3IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9')">Dashboard 3</button>
+        <!-- Add more buttons as needed -->
+    </div>
+
+    <div id="dashboard-container">
+        <iframe id="dashboard-iframe" class="dashboard-iframe" frameborder="0" allowfullscreen="true"></iframe>
+    </div>
+
+    <script>
+        function loadDashboard(url) {
+            document.getElementById('dashboard-iframe').src = url;
+        }
+    </script>
 
 </body>
 </html>
