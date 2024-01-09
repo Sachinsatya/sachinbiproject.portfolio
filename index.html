@@ -11,19 +11,23 @@
             overflow: hidden;
             display: flex;
             font-family: Arial, sans-serif;
+            flex-direction: column; /* Set main flex container to column layout */
         }
 
         #dashboard-list {
             display: flex;
-            flex-direction: row;
-            overflow-x: auto;
+            flex-direction: column; /* Set buttons to stack vertically */
+            overflow-y: auto;
             padding: 10px;
             background-color: #1e2a38; /* Dark blue background */
             color: white;
+            z-index: 1;
+            position: fixed;
+            height: 100%;
         }
 
         .dashboard-button {
-            margin-right: 10px;
+            margin-bottom: 10px;
             cursor: pointer;
             padding: 15px;
             border: none;
@@ -38,11 +42,14 @@
         #dashboard-container {
             flex: 1;
             display: flex;
-            overflow: hidden;
+            flex-direction: column; /* Set dashboards to stack vertically */
+            overflow-y: auto;
+            padding: 10px;
+            margin-left: 200px; /* Adjust margin to accommodate the button panel */
         }
 
         .dashboard-page {
-            min-width: 100vw; /* Each dashboard fits within one page */
+            width: 100vw;
             flex: 0 0 auto; /* Ensure no shrinking or growing */
         }
 
@@ -50,7 +57,8 @@
             width: 100%;
             height: 100vh;
             border: none;
-            display: inline-block;
+            display: block;
+            margin-bottom: 20px; /* Add spacing between dashboards */
         }
     </style>
 </head>
@@ -80,7 +88,7 @@
         function scrollToDashboard(index) {
             const dashboards = document.querySelectorAll('.dashboard-page');
             const targetDashboard = dashboards[index];
-            targetDashboard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            window.scrollTo({ top: targetDashboard.offsetTop, behavior: 'smooth' });
         }
     </script>
 
