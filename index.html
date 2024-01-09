@@ -21,9 +21,11 @@
             padding: 10px;
             background-color: #1e2a38;
             color: white;
-            z-index: 1;
             position: fixed;
-            height: 100%;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 1;
         }
 
         .dashboard-button {
@@ -45,22 +47,22 @@
             flex-direction: column;
             overflow-y: auto;
             padding: 10px;
-            align-items: center; /* Center the dashboards horizontally */
             margin-left: 200px;
         }
 
         .dashboard-page {
-            width: 100%;
-            flex: 0 0 auto;
-            display: flex;
-            justify-content: center; /* Center the iframe horizontally */
-            align-items: center; /* Center the iframe vertically */
-            margin-bottom: 20px;
+            width: 100vw;
+            height: 100vh;
+            display: none;
+        }
+
+        .dashboard-page.active {
+            display: block;
         }
 
         .dashboard-iframe {
-            max-width: 100%;
-            max-height: 100vh;
+            width: 100%;
+            height: 100%;
             border: none;
             display: block;
         }
@@ -69,14 +71,14 @@
 <body>
 
     <div id="dashboard-list">
-        <button class="dashboard-button" onclick="scrollToDashboard(0)">Dashboard 1</button>
-        <button class="dashboard-button" onclick="scrollToDashboard(1)">Dashboard 2</button>
-        <button class="dashboard-button" onclick="scrollToDashboard(2)">Dashboard 3</button>
+        <button class="dashboard-button" onclick="showDashboard(0)">Dashboard 1</button>
+        <button class="dashboard-button" onclick="showDashboard(1)">Dashboard 2</button>
+        <button class="dashboard-button" onclick="showDashboard(2)">Dashboard 3</button>
         <!-- Add more buttons as needed -->
     </div>
 
     <div id="dashboard-container">
-        <div class="dashboard-page">
+        <div class="dashboard-page active">
             <iframe class="dashboard-iframe" src="https://app.powerbi.com/view?r=eyJrIjoiMzRjOTliYjQtNzM4Ny00ODVkLWI3NTAtNGIwMzk0NjY1YWUwIiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" frameborder="0" allowfullscreen="true"></iframe>
         </div>
         <div class="dashboard-page">
@@ -89,10 +91,10 @@
     </div>
 
     <script>
-        function scrollToDashboard(index) {
-            const dashboards = document.querySelectorAll('.dashboard-page');
-            const targetDashboard = dashboards[index];
-            window.scrollTo({ top: targetDashboard.offsetTop, behavior: 'smooth' });
+        function showDashboard(index) {
+            const pages = document.querySelectorAll('.dashboard-page');
+            pages.forEach(page => page.classList.remove('active'));
+            pages[index].classList.add('active');
         }
     </script>
 
