@@ -147,13 +147,36 @@
         <!-- Add more iframes as needed -->
     </div>
 
+
     <script>
-        function showDashboard(index) {
-            const pages = document.querySelectorAll('.dashboard-page');
-            pages.forEach(page => page.classList.remove('active'));
-            pages[index].classList.add('active');
-        }
-    </script>
+    function showDashboard(index) {
+        const pages = document.querySelectorAll('.dashboard-page');
+        pages.forEach((page, i) => {
+            if (i === index) {
+                page.classList.add('active');
+                const iframe = page.querySelector('.dashboard-iframe');
+                if (!iframe.src) {
+                    // Load the dashboard content only if the iframe src is not set
+                    iframe.src = getDashboardUrl(index);
+                }
+            } else {
+                page.classList.remove('active');
+            }
+        });
+    }
+
+    function getDashboardUrl(index) {
+        // You can implement a function to determine the dashboard URL based on the index
+        // For example, return a URL from an array of URLs
+        const dashboardUrls = [
+            'https://example.com/dashboard1',
+            'https://example.com/dashboard2',
+            // Add more URLs as needed
+        ];
+
+        return dashboardUrls[index];
+    }
+</script>
 
 </body>
 </html>
