@@ -14,18 +14,24 @@
             flex-direction: column;
         }
 
-        #dashboard-list {
+        .dashboard-list-container {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             overflow-y: auto;
             padding: 10px;
             background-color: #1e2a38;
             color: white;
             position: fixed;
-            left: 0;
             top: 0;
             bottom: 0;
             z-index: 1;
+        }
+
+        .dashboard-list {
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding: 10px;
         }
 
         .dashboard-button {
@@ -66,45 +72,52 @@
             border: none;
             display: block;
         }
+
+        .dashboard-list-left {
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
 
-    <div id="dashboard-list">
-        <button class="dashboard-button" onclick="showDashboard(1)">Project 1</button>
-        <button class="dashboard-button" onclick="showDashboard(2)">Project 2</button>
-        <button class="dashboard-button" onclick="showDashboard(3)">Project 3</button>
-        <button class="dashboard-button" onclick="showDashboard(4)">Project 4</button>
-        <button class="dashboard-button" onclick="showDashboard(5)">Project 5</button>
-        <button class="dashboard-button" onclick="showDashboard(6)">Project 6</button>
-        <button class="dashboard-button" onclick="showDashboard(7)">Project 7</button>
-        <button class="dashboard-button" onclick="showDashboard(8)">Project 8</button>
-        <button class="dashboard-button" onclick="showDashboard(9)">Project 9</button>
-        <button class="dashboard-button" onclick="showDashboard(10)">Project 10</button>
-        <button class="dashboard-button" onclick="showDashboard(11)">Project 11</button>
-        <button class="dashboard-button" onclick="showDashboard(12)">Project 12</button>
+    <div class="dashboard-list-container">
+        <div class="dashboard-list dashboard-list-left">
+            <button class="dashboard-button" onclick="showDashboard(1)">Project 1</button>
+            <button class="dashboard-button" onclick="showDashboard(2)">Project 2</button>
+            <button class="dashboard-button" onclick="showDashboard(3)">Project 3</button>
+            <button class="dashboard-button" onclick="showDashboard(4)">Project 4</button>
+            <button class="dashboard-button" onclick="showDashboard(5)">Project 5</button>
+            <button class="dashboard-button" onclick="showDashboard(6)">Project 6</button>
+            <button class="dashboard-button" onclick="showDashboard(7)">Project 7</button>
+            <button class="dashboard-button" onclick="showDashboard(8)">Project 8</button>
+            <button class="dashboard-button" onclick="showDashboard(9)">Project 9</button>
+            <button class="dashboard-button" onclick="showDashboard(10)">Project 10</button>
+            <button class="dashboard-button" onclick="showDashboard(11)">Project 11</button>
+            <button class="dashboard-button" onclick="showDashboard(12)">Project 12</button>
+        </div>
 
-        <!-- Additional buttons -->
-        <button class="dashboard-button" onclick="showDashboard(13)">Project 13</button>
-        <button class="dashboard-button" onclick="showDashboard(14)">Project 14</button>
-        <button class="dashboard-button" onclick="showDashboard(15)">Project 15</button>
-        <button class="dashboard-button" onclick="showDashboard(16)">Project 16</button>
-        <button class="dashboard-button" onclick="showDashboard(17)">Project 17</button>
-        <button class="dashboard-button" onclick="showDashboard(18)">Project 18</button>
-        <button class="dashboard-button" onclick="showDashboard(19)">Project 19</button>
-        <button class="dashboard-button" onclick="showDashboard(20)">Project 20</button>
-        <button class="dashboard-button" onclick="showDashboard(21)">Project 21</button>
-        <button class="dashboard-button" onclick="showDashboard(22)">Project 22</button>
-        <button class="dashboard-button" onclick="showDashboard(23)">Project 23</button>
-        <button class="dashboard-button" onclick="showDashboard(24)">Project 24</button>
-        <!-- Add more buttons as needed -->
+        <div class="dashboard-list">
+            <!-- Additional buttons for the right side -->
+            <button class="dashboard-button" onclick="showDashboard(13)">Project 13</button>
+            <button class="dashboard-button" onclick="showDashboard(14)">Project 14</button>
+            <button class="dashboard-button" onclick="showDashboard(15)">Project 15</button>
+            <button class="dashboard-button" onclick="showDashboard(16)">Project 16</button>
+            <button class="dashboard-button" onclick="showDashboard(17)">Project 17</button>
+            <button class="dashboard-button" onclick="showDashboard(18)">Project 18</button>
+            <button class="dashboard-button" onclick="showDashboard(19)">Project 19</button>
+            <button class="dashboard-button" onclick="showDashboard(20)">Project 20</button>
+            <button class="dashboard-button" onclick="showDashboard(21)">Project 21</button>
+            <button class="dashboard-button" onclick="showDashboard(22)">Project 22</button>
+            <button class="dashboard-button" onclick="showDashboard(23)">Project 23</button>
+            <button class="dashboard-button" onclick="showDashboard(24)">Project 24</button>
+            <!-- Add more buttons as needed -->
+        </div>
     </div>
 
     <div id="dashboard-container">
-        
         <!-- Existing iframe containers -->
 
-        <!-- Additional iframe containers -->
+        <!-- Additional iframe containers for the right side -->
         <div class="dashboard-page">
             <iframe class="dashboard-iframe" src="https://example.com/dashboard13" frameborder="0" allowfullscreen="true"></iframe>
         </div>
@@ -141,27 +154,4 @@
             <iframe class="dashboard-iframe" src="https://example.com/dashboard21" frameborder="0" allowfullscreen="true"></iframe>
         </div>
 
-        <div class="dashboard-page">
-            <iframe class="dashboard-iframe" src="https://example.com/dashboard22" frameborder="0" allowfullscreen="true"></iframe>
-        </div>
-
-        <div class="dashboard-page">
-            <iframe class="dashboard-iframe" src="https://example.com/dashboard23" frameborder="0" allowfullscreen="true"></iframe>
-        </div>
-
-        <div class="dashboard-page">
-            <iframe class="dashboard-iframe" src="https://example.com/dashboard24" frameborder="0" allowfullscreen="true"></iframe>
-        </div>
-
-        <!-- Add more iframe containers as needed -->
-    </div>
-
-    <script>
-    function showDashboard(index) {
-        const pages = document.querySelectorAll('.dashboard-page');
-        pages.forEach((page, i) => {
-            if (i === index) {
-                page.classList.add('active');
-                const iframe = page.querySelector('.dashboard-iframe');
-                if (!iframe.src) {
-                    // Load the dashboard content only
+        <div class="
